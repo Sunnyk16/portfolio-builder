@@ -1,17 +1,30 @@
 'use client'
 import { useUser } from '@clerk/nextjs';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { db, } from '../../utils'
 
 import { userInfo } from '../../utils/schema'
 import { useRouter } from 'next/navigation';
+import { eq } from 'drizzle-orm'
 
 
 function CreateUsername() {
     const [username, setUsername] = useState();
     const {user}=useUser();
     const router = useRouter();
+
+    useEffect(()=>{
+        user && checkUser();
+    }   ,[user])
+    
+        const checkUser = async () => {
+            const result = await db.select().from(userInfo).where(eq(userInfo.email, user?.primaryEmailAddress?.emailAddress))
+            console.log(result)
+            if (result?.length > 0) {
+                router.replace('/admin')
+            }
+        }
 
     const OnCreateBtnClick = async() => {
         if(username.length>10){
