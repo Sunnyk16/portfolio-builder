@@ -1,5 +1,6 @@
 import React from 'react'
 import SideNav from './_components/SideNav'
+import  Provider  from './Provider'
 
 function AdminLayout({children}) {
   return (
@@ -7,7 +8,11 @@ function AdminLayout({children}) {
       <div className='w-24 fixed'>
         <SideNav/>
       </div>
-      <div className='ml-24'>{children}</div>
+      <div className='ml-24'>
+        <Provider>
+        {children}
+        </Provider>
+      </div>
     </div>
    )
 }
