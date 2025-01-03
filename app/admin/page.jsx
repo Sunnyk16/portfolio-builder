@@ -11,6 +11,9 @@ import { userInfo } from '../../utils/schema'
 import { eq } from 'drizzle-orm'
 import { useRouter } from 'next/navigation';
 
+import FormContent from './_components/FormContent'
+import Mobilepreview from './_components/Mobilepreview' 
+
 
 function Admin() {
 
@@ -31,7 +34,16 @@ function Admin() {
     }
 
     return (
-        <div>Admin</div>
+        <div>
+            <div className='grid grid-cols-1 lg:grid-cols-3'>
+                <div className='col-span-2'>
+                    <FormContent/>
+                </div>
+                <div>
+                    <Mobilepreview/>
+                </div>
+            </div>
+        </div>
     )
 }
 
