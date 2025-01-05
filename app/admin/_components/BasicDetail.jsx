@@ -88,6 +88,7 @@ function BasicDetail() {
                     </div>
                     : selectedOption == 'link' ?
                         <div className='mt-3'>
+                            {/* .... */}
                             <label className="input input-bordered flex items-center gap-2">
                                 <Link2 />
                                 <input type="text" className="grow" placeholder="URL"
