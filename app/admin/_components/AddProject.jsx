@@ -24,6 +24,8 @@ function AddProject() {
                 useRef: userDetail?.id
             });
 
+            setOpenUrlInput(false);
+
             if (result) {
                 toast.success('Project added successfully', {
                     position: 'top-right'
