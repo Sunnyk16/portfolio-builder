@@ -27,6 +27,9 @@ function FormtContent() {
     setProjectList(result)
 
   }
+
+  
+
   return (
     <div className='py-12 px-6'>
       <h2 className='text-bold text-3xl'>Start Designing Your portfolio page</h2>
