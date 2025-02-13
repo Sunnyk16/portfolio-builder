@@ -31,7 +31,7 @@ function FormtContent() {
   
 
   return (
-    <div className='py-12 px-6'>
+    <div className='py-12 px-6 overflow-auto'>
       <h2 className='text-bold text-3xl'>Start Designing Your portfolio page</h2>
       <BasicDetail/>
       <hr className='my-5'></hr>
