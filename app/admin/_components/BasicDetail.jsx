@@ -154,12 +154,12 @@ function BasicDetail() {
             // Save the uploaded URL to the database
             const uploadResult = await db
                 .update(userInfo)
-                .set({ profilePicture: imageUrl }) // Assuming a 'profilePicture' field exists
+                .set({ profilePicture: imageUrl }) 
                 .where(eq(userInfo.email, user?.primaryEmailAddress.emailAddress));
 
             if (uploadResult) {
                 toast.success('Profile picture updated successfully!', { position: 'top-right' });
-                setProfilePicture(imageUrl); // Update the displayed profile picture
+                setProfilePicture(imageUrl); 
                 setUserDetails((prevDetails) => ({
                     ...prevDetails,
                     profilePicture: imageUrl,
