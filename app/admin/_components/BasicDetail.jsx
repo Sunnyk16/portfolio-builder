@@ -152,6 +152,7 @@ function BasicDetail() {
             
 
             // Save the uploaded URL to the database
+            // ....
             const uploadResult = await db
                 .update(userInfo)
                 .set({ profilePicture: imageUrl }) 
