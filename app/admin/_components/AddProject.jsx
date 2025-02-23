@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { project } from '../../../utils/schema';
 import { UserDetailContext } from '../Provider';
 import { toast } from 'react-toastify';
-// import { db } from '../../../utils/db'; // Ensure you have this import
+
 import { db } from '../../../utils';
 
 function AddProject() {
