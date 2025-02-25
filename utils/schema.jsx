@@ -1,33 +1,3 @@
-// import { boolean, text } from "drizzle-orm/mysql-core";
-
-// const { pgTable, serial, varchar, integer } = require("drizzle-orm/pg-core");
-
-// export const userInfo = pgTable('userInfo', {
-//     id: serial('id').primaryKey(),
-//     name: varchar('name').notNull(),
-//     email: varchar('email').notNull(),
-//     username: varchar('username'),
-//     // bio: text('bio'),
-//     bio: varchar('bio'),
-//     location: varchar('location'),
-//     link: varchar('link'),
-//     profileImage: varchar('profileImage'),
-// })
-
-
-
-// export const project=pgTable('project',{
-//     id:serial('id').primaryKey(),
-//     name:varchar('name'),
-//     desc:varchar('desc'),
-//     url:varchar('url').notNull(),
-//     logo:varchar('logo'),
-//     banner:varchar('banner'),
-//     category:varchar('category'),
-//     active:boolean('active').default(true),
-//     emailRef:varchar('emailRef'),
-//     userRef:integer('userRef').references(()=>userInfo?.id),
-// })
 import { pgTable, serial, varchar, integer, boolean, text } from "drizzle-orm/pg-core";
 
 // User Information Table
@@ -53,5 +23,6 @@ export const project = pgTable("project", {
     category: varchar("category", { length: 255 }),
     active: boolean("active").default(true).notNull(), // Fixed boolean issue
     emailRef: varchar("emailRef", { length: 255 }),
-    userRef: integer("userRef").references(() => userInfo.id), // Fixed reference
+    userRef: integer("userRef").references(() => userInfo.id),
+    showGraph: boolean("showGraph").default(true), // Added new column
 });

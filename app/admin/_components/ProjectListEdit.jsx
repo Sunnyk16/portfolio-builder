@@ -1,5 +1,5 @@
 
-import { Link2, SquareStack, Trash2 } from 'lucide-react';
+import { Image, LineChart, Link2, SquareStack, Trash2 } from 'lucide-react';
 import React, { useState } from 'react';
 import { db } from '../../../utils';
 import { project } from '../../../utils/schema';
@@ -30,7 +30,7 @@ function ProjectListEdit({ projectList, refreshData }) {
         }, 1000);
     };
 
-    const OnProjectDelete=(projectId)=>{
+    const OnProjectDelete = (projectId) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -39,18 +39,18 @@ function ProjectListEdit({ projectList, refreshData }) {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                const result =await db.delete(project).where(eq(project.id, projectId));
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
+                const result = await db.delete(project).where(eq(project.id, projectId));
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
                 refreshData();
-               toast.error('Deleted', { position: 'top-right' });
+                toast.error('Deleted', { position: 'top-right' });
             }
-          });
+        });
     }
 
     return (
@@ -78,6 +78,12 @@ function ProjectListEdit({ projectList, refreshData }) {
                                         className={`h-14 w-12 p-3 rounded-md text-yellow-500 hover:bg-gray-600 ${selectedOption === 'category' + index ? 'bg-gray-600' : ''}`}
                                         onClick={() => setSelectedOption('category' + index)}
                                     />
+                                    {/* <Image className={`h-12 w-12 p-3 rounded-md hover:bg-gray-600 ${selectedOption === 'banner' + index ? 'bg-gray-600' : ''}`}
+                                        onClick={() => setSelectedOption('banner' + index)} /> */}
+
+                                    <LineChart className={`h-12 w-12 p-3 rounded-md hover:bg-gray-600 ${selectedOption === 'banner' + index ? 'bg-gray-600' : ''}`}
+                                        onClick={() => setSelectedOption('linechart' + index)} />
+
                                 </div>
 
                                 <div className='flex gap-2 items-center'>
@@ -106,6 +112,26 @@ function ProjectListEdit({ projectList, refreshData }) {
                                         <input type='text' className='grow' placeholder='Category' defaultValue={project.category}
 
                                             onChange={(event) => onInputChange(event.target.value, 'category', project.id)} />
+                                    </label>
+                                </div>
+                            )}
+                            {/* banner option */}
+                            {/* {selectedOption === 'banner' + index && (
+                                <div className='mt-2'>
+                                    <label>Add Banner</label>
+                                    <label className='flex items-center gap-2 cursor-pointer'>
+                                        <Image className='w-[100px] h-[100px]' />
+                                        <input type='file' className='hidden' onChange={(event) => handleFileUploadForProject(event, project.id)} />
+                                    </label>
+                                </div>
+                            )} */}
+                            {selectedOption === 'linechart' + index && (
+                                <div className='mt-2 flex justify-between items-center'>
+                                    <label>Show Project Visitors Graph</label>
+                                    <label className='flex items-center gap-2 cursor-pointer'>
+                                    <input type="checkbox" defaultChecked className="toggle toggle-secondary"
+                                        checked={project?.showGraph} onChange={(event) => onInputChange(event.target.checked, 'showGraph', project.id)} />
+                                        
                                     </label>
                                 </div>
                             )}
