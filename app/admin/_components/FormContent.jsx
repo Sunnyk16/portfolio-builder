@@ -20,7 +20,7 @@ function FormtContent() {
   },[user])
 
   const GetProjectList=async()=>{
-    const result =await db.select().from(project).where(eq(project.emailRef,user?.primaryEmailAddress?.emailAddress)).orderBy(desc(project.id))
+    const result =await db.select().from(project).where(eq(project.emailRef,user?.primaryEmailAddress?.emailAddress)).orderBy(asc(project.order))
 
     console.log(result);
     
