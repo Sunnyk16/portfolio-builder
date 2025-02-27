@@ -11,6 +11,7 @@ export const userInfo = pgTable("userInfo", {
     location: varchar("location", { length: 255 }),
     link: varchar("link", { length: 255 }),
     profileImage: varchar("profileImage", { length: 255 }),
+    theme: varchar("theme").default("light"),
 });
 
 // Project Table

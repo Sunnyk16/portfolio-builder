@@ -1,34 +1,4 @@
-// 'use client'
-// import React, { useEffect } from 'react'
-// import { db } from '../../utils'
-// import { useUser } from '@clerk/nextjs'
-// import { eq } from 'drizzle-orm';
-// import { userInfo } from '../../utils/schema';
 
-// function Provider({children}) {
-//     const {user}=useUser();
-//     useEffect(() => {
-//         user&&GetUserDetails()
-//     }, [user])
-//     const GetUserDetails=async()=>{
-//         const result=await db.query.userInfo.findMany({
-//             with:{
-//                 projects:true
-//             },
-//             where:eq(userInfo.email,user?.primaryEmailAddress?.emailAddress)
-//         })
-//         console.log(db.query);
-
-//         console.log(result)
-//     }
-//   return (
-//     <div data-theme="light"  >
-//         {children}
-//     </div>
-//   )
-// }
-
-// export default Provider
 'use client'
 import React, { useEffect, useState, createContext } from 'react'
 import { db } from '../../utils'
@@ -52,11 +22,11 @@ function Provider({ children }) {
         try {
             const result = await db.select()
                 .from(userInfo)
-                .leftJoin(project, eq(userInfo.id, project.userRef))  // ✅ Join with projects
+                .leftJoin(project, eq(userInfo.id, project.userRef)) 
                 .where(eq(userInfo.email, user.primaryEmailAddress.emailAddress));
 
             if (result.length > 0) {
-                setUserDetails(result[0]);  // ✅ Store only the first user object
+                setUserDetails(result);
             } else {
                 setUserDetails(null);
             }
@@ -70,7 +40,7 @@ function Provider({ children }) {
 
     return (
         <UserDetailContext.Provider value={{ userDetails, setUserDetails }}>
-            <div data-theme="light">
+            <div data-theme={userDetails?.[0]?.userInfo?.theme }>
                 {children}
             </div>
         </UserDetailContext.Provider>

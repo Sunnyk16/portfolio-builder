@@ -35,11 +35,11 @@ function Admin() {
 
     return (
         <div className='p-5'>
-            <div className='grid grid-cols-1 lg:grid-cols-3'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                 <div className='col-span-2'>
                     <FormContent/>
                 </div>
-                <div>
+                <div className='h-full flex justify-center items-center'>
                     <Mobilepreview/>
                 </div>
             </div>
