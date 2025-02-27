@@ -1,5 +1,6 @@
 import { UserButton } from '@clerk/nextjs'
 import { BarChart, Brush, Layers3, Settings } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 function SideNav() {
@@ -7,31 +8,35 @@ function SideNav() {
     {
       id:1,
       name:'Pages',
-      icon:Layers3
+      icon:Layers3,
+      path:'/admin'
     },
     {
       id:1,
       name:'Style',
-      icon:Brush
+      icon:Brush,
+      path:'/admin/style'
     },
     {
       id:1,
       name:'Stats',
-      icon:BarChart
+      icon:BarChart,
+      path:'/admin/analytics'
     },
     {
       id:1,
       name:'Settings',
-      icon:Settings
+      icon:Settings,
+      path:'/admin/setting'
     }
   ]
   return (
     <div className='p-4 bg-[#00000052] h-screen'>
       {menuList.map((menu, index) => (
-         <div key={menu.id} className='p-2 py-4 rounded-lg bg-primary flex items-center justify-center mb-5
-         tooltip-secondary tooltip tooltip-right'>
+         <Link href={menu.path} key={menu.id} className='p-2 py-4 rounded-lg bg-primary flex items-center justify-center mb-5
+         tooltip-secondary tooltip tooltip-right' data-tip={menu.name}>
             <menu.icon className='text-white text-center' />
-         </div>
+         </Link>
       ))}
 
       <div className='fixed bottom-5 px-4'>
