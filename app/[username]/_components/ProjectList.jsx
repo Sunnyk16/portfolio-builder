@@ -59,47 +59,7 @@ function ProjectList({ projectList }) {
       console.error("Error fetching analytics data:", error);
     }
   };
-  // const GetprojectWiseAnalyticData = (projectId) => {
-  //   let resp = projectClickData?.filter((project) => project.projectId == projectId)
-  //   let result = [];
-
-  //   result.push({
-  //     month: 'feb',
-  //     totalClicks: 0,
-  //     projectId: 0
-  //   },
-  //   {
-  //     month:'feb',
-  //     totalClicks:0,
-  //     projectId:0
-  //   }
-  //   )
-  //   result.push(resp[0]);
-  // }
-  // const GetprojectWiseAnalyticData = (projectId) => {
-  //   let resp = projectClickData?.filter((project) => project.projectId == projectId);
-  //   let result = [];
-  
-  //   // Provide default months to prevent empty graphs
-  //   let defaultData = [
-  //     { month: "Jan", totalClicks: 0 },
-  //     { month: "Feb", totalClicks: 0 },
-  //     { month: "Mar", totalClicks: 0 },
-  //     { month: "Apr", totalClicks: 0 },
-  //     { month: "May", totalClicks: 0 }
-  //   ];
-  
-  //   // Map the API response to match the required format
-  //   resp.forEach((item) => {
-  //     result.push({
-  //       month: moment().format("MMM"), // Generate current month (or modify based on your DB structure)
-  //       totalClicks: parseInt(item.totalClicks) || 0,
-  //     });
-  //   });
-  //   const finalResult=[...result,...resp]
-  
-  //   return finalResult.length ? result : defaultData;
-  // };
+ 
   const GetprojectWiseAnalyticData = (projectId) => {
     let resp = projectClickData?.filter((project) => project.projectId == projectId);
   
@@ -129,11 +89,11 @@ function ProjectList({ projectList }) {
   
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-7 my-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-7 my-5">
       {projectList?.map((project) => (
         <div
           key={project.id}
-          className="border shadow-sm rounded-lg p-4 hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+          className="border shadow-sm rounded-lg p-4 hover:scale-95 transition-all hover:shadow-md cursor-pointer"
           onClick={() => OnProjectClick(project)}
         >
           <div className="flex gap-2 items-center">

@@ -3,16 +3,11 @@
 import { useUser } from '@clerk/nextjs'
 import React, { useEffect } from 'react'
 import { db, } from '../../utils'
-
 import { userInfo } from '../../utils/schema'
-
-
-
 import { eq } from 'drizzle-orm'
 import { useRouter } from 'next/navigation';
-
 import FormContent from './_components/FormContent'
-import Mobilepreview from './_components/Mobilepreview' 
+import MobilePreview from './_components/Mobilepreview'
 
 
 function Admin() {
@@ -40,7 +35,7 @@ function Admin() {
                     <FormContent/>
                 </div>
                 <div className='h-full flex justify-center items-center'>
-                    <Mobilepreview/>
+                    <MobilePreview/>
                 </div>
             </div>
         </div>
