@@ -1,6 +1,8 @@
 import React from 'react'
 import ThemeOptions from './_components/ThemeOptions'
-import MobilePreview from '../_components/Mobilepreview'
+import MobilePreview from '../_components/MobilePreview'
+
+
 
 
 function Style() {
@@ -12,6 +14,7 @@ function Style() {
                     <ThemeOptions/>
                 </div>
                 <div className='h-full flex justify-center items-center'>
+                    {/* <MobilePreview/> */}
                     <MobilePreview/>
                 </div>
             </div>
