@@ -106,11 +106,13 @@ function Provider({ children }) {
     };
 
     return (
+
         <UserDetailContext.Provider value={{ userDetails, projects, setUserDetails }}>
             <div data-theme={userDetails?.theme}>
                 {children}
             </div>
         </UserDetailContext.Provider>
+        
     );
 }
 

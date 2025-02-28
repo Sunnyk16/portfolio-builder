@@ -7,11 +7,13 @@ import { useUser } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
 import { toast } from 'react-toastify';
 import { UserDetailContext } from '../../Provider';
+import { PreviewUpdatedContext } from '../../../_context/PreviewUpdatedContext';
 
 function ThemeOptions() {
     const { user } = useUser();
     const { userDetails, setUserDetails } = useContext(UserDetailContext) || {};
     const [selectedTheme, setSelectedTheme] = useState();
+    const { updatePreview, setupdatePreview } = useContext(PreviewUpdatedContext);
 
     const onThemeSelect = async (themeName) => {
         try {
@@ -22,7 +24,8 @@ function ThemeOptions() {
 
             if (result) {
                 console.log("Theme Updated Successfully");
-                toast.success("Theme Updated Successfully", { position: 'top-right' });
+                toast.success("Theme Updated Successfully", { position: 'top-right' })
+                setupdatePreview(updatePreview+1);
 
                 // Update context state
                 setUserDetails((prev) => ({ ...prev, theme: themeName }));

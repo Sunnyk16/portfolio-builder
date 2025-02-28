@@ -183,17 +183,19 @@
 
 // export default ProjectListEdit;
 import { Image, LineChart, Link2, SquareStack, Trash2 } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { db } from '../../../utils';
 import { project } from '../../../utils/schema';
 import { eq } from 'drizzle-orm';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { PreviewUpdatedContext } from '../../_context/PreviewUpdatedContext';
 
 function ProjectListEdit({ projectList, refreshData }) {
     const [selectedOption, setSelectedOption] = useState();
     const [projectListData, setProjectListData] = useState([]);
+    const { updatePreview, setupdatePreview } = useContext(PreviewUpdatedContext);
 
     useEffect(() => {
         if (projectList) setProjectListData(projectList);
@@ -204,7 +206,8 @@ function ProjectListEdit({ projectList, refreshData }) {
             try {
                 await db.update(project).set({ [fieldName]: value }).where(eq(project.id, projectId));
                 refreshData();
-                toast.success('Saved', { position: 'top-right' });
+                toast.success('Saved', { position: 'top-right' })
+                setupdatePreview(updatePreview + 1);
             } catch (error) {
                 toast.error('Error saving changes', { position: 'top-right' });
             }
@@ -226,7 +229,8 @@ function ProjectListEdit({ projectList, refreshData }) {
                     await db.delete(project).where(eq(project.id, projectId));
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
                     refreshData();
-                    toast.error('Deleted', { position: 'top-right' });
+                    toast.error('Deleted', { position: 'top-right' })
+                    setupdatePreview(updatePreview + 1);
                 } catch (error) {
                     toast.error('Error deleting project', { position: 'top-right' });
                 }
@@ -245,7 +249,8 @@ function ProjectListEdit({ projectList, refreshData }) {
         try {
             await db.update(project)
                 .set({ order: result.destination.index })
-                .where(eq(project.id, result.draggableId));
+                .where(eq(project.id, result.draggableId))
+                setupdatePreview(updatePreview + 1);
         } catch (error) {
             console.error('Error updating order:', error);
         }
