@@ -1,6 +1,7 @@
 import React from 'react'
-import MobilePreview from '../_components/Mobilepreview'
 import ThemeOptions from './_components/ThemeOptions'
+import MobilePreview from '../_components/Mobilepreview'
+
 
 function Style() {
   return (
