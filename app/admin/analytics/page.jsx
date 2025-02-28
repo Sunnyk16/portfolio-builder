@@ -18,13 +18,13 @@ function Analytics() {
                     {/* total project view */}
                     <ProjectVisitors />
                 </div>
-                <div>
+                {/* <div>
                     Total Subscriber
                 </div>
                 
                 <div>
                     coming soon...
-                </div>
+                </div> */}
 
             </div>
         </div>
