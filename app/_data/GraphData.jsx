@@ -1,0 +1,35 @@
+export const dummyUniqueVisitor=[
+    {
+        totalClick:0,
+        month:'january'
+    },
+    {
+        totalClick:0,
+        month:'february'
+    },
+    {
+        totalClick:0,
+        month:'march'
+    },
+    {
+        totalClick:0,
+        month:'april'
+    },
+    {
+        totalClick:0,
+        month:'may'
+    },
+    {
+        totalClick:0,
+        month:'june'
+    },
+    {
+        totalClick:0,
+        month:'july'
+    },
+    {
+        totalClick:0,
+        month:'august'
+    },
+    
+]
