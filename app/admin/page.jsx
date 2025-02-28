@@ -7,7 +7,7 @@ import { userInfo } from '../../utils/schema'
 import { eq } from 'drizzle-orm'
 import { useRouter } from 'next/navigation';
 import FormContent from './_components/FormContent'
-import MobilePreview from './_components/Mobilepreview'
+import MobilePreview from './_components/MobilePreview'
 
 
 function Admin() {
