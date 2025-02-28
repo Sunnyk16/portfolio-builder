@@ -54,25 +54,30 @@ import { db } from '../../utils';
 import { useUser } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
 import { userInfo, project } from '../../utils/schema';
+import { usePathname } from 'next/navigation';
 
 export const UserDetailContext = createContext(null);
 
 function Provider({ children }) {
     const { user } = useUser();
+    const USERNAME=usePathname().replace('/','');
     const [userDetails, setUserDetails] = useState(null);
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        if (user?.primaryEmailAddress?.emailAddress) {
-            GetUserDetails();
-        }
+        console.log("username : ",USERNAME);
+        
+        // if (user?.primaryEmailAddress?.emailAddress) {
+        //     GetUserDetails();
+        // }
+        GetUserDetails();
     }, [user]);
 
     const GetUserDetails = async () => {
         try {
             const userData = await db.select()
                 .from(userInfo)
-                .where(eq(userInfo.email, user.primaryEmailAddress.emailAddress));
+                .where(eq(userInfo.username, USERNAME));
 
             if (userData.length > 0) {
                 setUserDetails(userData[0]);
