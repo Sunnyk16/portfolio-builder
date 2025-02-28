@@ -76,29 +76,56 @@ function ProjectList({ projectList }) {
   //   )
   //   result.push(resp[0]);
   // }
+  // const GetprojectWiseAnalyticData = (projectId) => {
+  //   let resp = projectClickData?.filter((project) => project.projectId == projectId);
+  //   let result = [];
+  
+  //   // Provide default months to prevent empty graphs
+  //   let defaultData = [
+  //     { month: "Jan", totalClicks: 0 },
+  //     { month: "Feb", totalClicks: 0 },
+  //     { month: "Mar", totalClicks: 0 },
+  //     { month: "Apr", totalClicks: 0 },
+  //     { month: "May", totalClicks: 0 }
+  //   ];
+  
+  //   // Map the API response to match the required format
+  //   resp.forEach((item) => {
+  //     result.push({
+  //       month: moment().format("MMM"), // Generate current month (or modify based on your DB structure)
+  //       totalClicks: parseInt(item.totalClicks) || 0,
+  //     });
+  //   });
+  //   const finalResult=[...result,...resp]
+  
+  //   return finalResult.length ? result : defaultData;
+  // };
   const GetprojectWiseAnalyticData = (projectId) => {
     let resp = projectClickData?.filter((project) => project.projectId == projectId);
-    let result = [];
   
-    // Provide default months to prevent empty graphs
+    // Default months to prevent empty graphs
     let defaultData = [
       { month: "Jan", totalClicks: 0 },
       { month: "Feb", totalClicks: 0 },
       { month: "Mar", totalClicks: 0 },
       { month: "Apr", totalClicks: 0 },
-      { month: "May", totalClicks: 0 }
+      { month: "May", totalClicks: 0 },
     ];
   
-    // Map the API response to match the required format
-    resp.forEach((item) => {
-      result.push({
-        month: moment().format("MMM"), // Generate current month (or modify based on your DB structure)
-        totalClicks: parseInt(item.totalClicks) || 0,
-      });
-    });
+    // Ensure we have valid response data
+    if (!resp.length) {
+      return defaultData;
+    }
   
-    return result.length ? result : defaultData;
+    // Map the API response to ensure correct month mapping
+    let formattedData = resp.map((item) => ({
+      month: item.month,  // Assuming `month` exists in the database
+      totalClicks: parseInt(item.totalClicks) || 0,
+    }));
+  
+    return formattedData.length ? formattedData : defaultData;
   };
+  
   
 
   return (
