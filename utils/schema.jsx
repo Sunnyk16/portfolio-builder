@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 import { pgTable, serial, varchar, integer, boolean, text } from "drizzle-orm/pg-core";
 
+
 // User Information Table
 export const userInfo = pgTable("userInfo", {
     id: serial("id").primaryKey(),
@@ -28,6 +29,17 @@ export const project = pgTable("project", {
     userRef: integer("userRef").references(() => userInfo.id),
     showGraph: boolean("showGraph").default(true), 
     order: integer("order").default(0), 
+});
+
+// export const ProjectClicks = pgTable('projectClicks',{
+//     id:serial('id').primaryKey(),
+//     projectRef:integer('projectRef').references(()=>project.id),
+//     month:varchar('month')
+// })
+export const ProjectClicks = pgTable("projectClicks", {
+    id: serial("id").primaryKey(),
+    projectRef: integer("projectRef").notNull().references(() => project.id),
+    month: varchar("month").notNull(),
 });
 
 export const UserProjectRelation = relations(userInfo, ({ many }) => ({
