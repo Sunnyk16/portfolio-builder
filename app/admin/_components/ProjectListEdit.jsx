@@ -8,6 +8,7 @@ import { eq } from 'drizzle-orm';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { PreviewUpdatedContext } from '../../_context/PreviewUpdatedContext';
+import { CldUploadWidget } from 'next-cloudinary';
 
 function ProjectListEdit({ projectList, refreshData }) {
     const [selectedOption, setSelectedOption] = useState();
@@ -23,7 +24,7 @@ function ProjectListEdit({ projectList, refreshData }) {
             try {
                 await db.update(project).set({ [fieldName]: value }).where(eq(project.id, projectId));
                 refreshData();
-                toast.success('Saved', { position: 'top-right' })
+                toast.success('Saved', { position: 'top-right' });
                 setupdatePreview(updatePreview + 1);
             } catch (error) {
                 toast.error('Error saving changes', { position: 'top-right' });
@@ -46,7 +47,7 @@ function ProjectListEdit({ projectList, refreshData }) {
                     await db.delete(project).where(eq(project.id, projectId));
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
                     refreshData();
-                    toast.error('Deleted', { position: 'top-right' })
+                    toast.error('Deleted', { position: 'top-right' });
                     setupdatePreview(updatePreview + 1);
                 } catch (error) {
                     toast.error('Error deleting project', { position: 'top-right' });
@@ -66,10 +67,29 @@ function ProjectListEdit({ projectList, refreshData }) {
         try {
             await db.update(project)
                 .set({ order: result.destination.index })
-                .where(eq(project.id, result.draggableId))
-                setupdatePreview(updatePreview + 1);
+                .where(eq(project.id, result.draggableId));
+            setupdatePreview(updatePreview + 1);
         } catch (error) {
             console.error('Error updating order:', error);
+        }
+    };
+
+    const handleLogoUploadSuccess = async (result, projectId) => {
+        if (result?.info?.secure_url) {
+            const imageUrl = result.info.secure_url;
+            console.log('Uploaded Logo URL:', imageUrl);
+
+            try {
+                await db.update(project)
+                    .set({ logo: imageUrl })
+                    .where(eq(project.id, projectId));
+
+                toast.success('Logo updated successfully!', { position: 'top-right' });
+                refreshData(); // Refresh the project list to reflect the new logo
+                setupdatePreview(updatePreview + 1);
+            } catch (error) {
+                toast.error('Failed to update logo!', { position: 'top-right' });
+            }
         }
     };
 
@@ -85,10 +105,39 @@ function ProjectListEdit({ projectList, refreshData }) {
                                         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className='p-3 my-7 rounded-lg bg-gray-800 mt-10'>
                                             <div>
                                                 <div className='flex items-center gap-3'>
-                                                    <img src={project.logo} alt={project.name} className='w-[50px] h-[50px] rounded-full' />
-                                                    <input type='text' className='input input-bordered w-full' placeholder='Project / Startup Name' defaultValue={project.name} onChange={(event) => onInputChange(event.target.value, 'name', project.id)} />
+                                                    <div className="relative">
+                                                        <img
+                                                            src={`${project.logo || '/default-logo.png'}?${Date.now()}`} // Cache-busting query parameter
+                                                            alt={project.name}
+                                                            className='w-[50px] h-[50px] rounded-full'
+                                                        />
+                                                        <CldUploadWidget
+                                                            uploadPreset="portfolio-developer" // Your Cloudinary upload preset
+                                                            onSuccess={(result) => handleLogoUploadSuccess(result, project.id)}
+                                                        >
+                                                            {({ open }) => (
+                                                                <Image
+                                                                    className="absolute bottom-0 right-0 p-1 h-6 w-6 bg-gray-500 rounded-full cursor-pointer"
+                                                                    onClick={() => open()}
+                                                                />
+                                                            )}
+                                                        </CldUploadWidget>
+                                                    </div>
+                                                    <input
+                                                        type='text'
+                                                        className='input input-bordered w-full'
+                                                        placeholder='Project / Startup Name'
+                                                        defaultValue={project.name}
+                                                        onChange={(event) => onInputChange(event.target.value, 'name', project.id)}
+                                                    />
                                                 </div>
-                                                <input type='text' className='input input-bordered w-full text-sm mt-2' placeholder='Tell me about your project' defaultValue={project.description} onChange={(event) => onInputChange(event.target.value, 'description', project.id)} />
+                                                <input
+                                                    type='text'
+                                                    className='input input-bordered w-full text-sm mt-2'
+                                                    placeholder='Tell me about your project'
+                                                    defaultValue={project.description}
+                                                    onChange={(event) => onInputChange(event.target.value, 'description', project.id)}
+                                                />
                                                 <div className='flex gap-3 mt-3 items-center justify-between'>
                                                     <div className='flex gap-3 mt-3'>
                                                         <Link2 className={`h-14 w-12 p-3 rounded-md text-blue-500 hover:bg-gray-600 ${selectedOption === 'link' + index ? 'bg-gray-600' : ''}`} onClick={() => setSelectedOption('link' + index)} />
