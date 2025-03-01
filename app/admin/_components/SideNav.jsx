@@ -1,5 +1,5 @@
 import { UserButton } from '@clerk/nextjs'
-import { BarChart, Brush, Layers3, Settings } from 'lucide-react'
+import { BarChart, Brush, HomeIcon, Layers3, Settings } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -7,10 +7,18 @@ function SideNav() {
   const menuList=[
     {
       id:1,
+      name:'Home',
+      icon:HomeIcon,
+      path:'/'
+
+    },
+    {
+      id:1,
       name:'Pages',
       icon:Layers3,
       path:'/admin'
     },
+    
     {
       id:1,
       name:'Style',
