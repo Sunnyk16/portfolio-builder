@@ -16,6 +16,7 @@
     "@neondatabase/serverless": "^0.10.4",
     "drizzle-orm": "^0.38.3",
     "firebase": "^11.1.0",
+    "framer-motion": "^12.4.7",
     "lucide-react": "^0.469.0",
     "moment": "^2.30.1",
     "next": "14.2.18",
