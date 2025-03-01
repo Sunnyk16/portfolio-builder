@@ -56,12 +56,12 @@ const demoData = [
 
 const MarqueeCardsReverse = () => {
     return (
-        <div className='overflow-hidden relative'>
+        <div className='overflow-hidden py-10 relative'>
             {/* Marquee Container */}
             <motion.div
                 className='flex'
                 animate={{
-                    x: ['0%', '20%'], // Move from 0% to 20% (reverse direction)
+                    x: ['0%', '100%'], // Move from 0% to 100% (reverse direction)
                 }}
                 transition={{
                     duration: 10, // Duration of one loop (adjust based on the number of cards)
@@ -73,25 +73,11 @@ const MarqueeCardsReverse = () => {
                 {[...demoData, ...demoData].map((item, index) => (
                     <motion.div
                         key={index}
-                        className='flex-shrink-0 w-80 mx-4 p-6 bg-gray-800 rounded-xl shadow-2xl hover:shadow-3xl hover:shadow-blue-500/30 border border-gray-700 transition-all relative'
-                        whileHover={{ y: -10, scale: 1.05, transition: { duration: 0.3 } }} // Floating effect on hover
+                        className='flex-shrink-0 w-80 mx-4 p-6 bg-gray-800 rounded-md shadow-sm hover:shadow-xl transition-all relative'
                         style={{
-                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+                            boxShadow: '0 4px 6px rgba(255, 255, 255, 0.1)', // Minimal white shadow
                         }}
                     >
-                        {/* Floating Effect */}
-                        <motion.div
-                            initial={{ y: 0 }}
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{
-                                duration: 3,
-                                repeat: Infinity,
-                                repeatType: 'mirror',
-                                ease: 'easeInOut',
-                            }}
-                            className='absolute inset-0 rounded-xl bg-gradient-to-br from-blue-600/10 to-blue-800/10 opacity-50'
-                        />
-
                         <div className='flex flex-col items-center space-y-4 relative z-10'>
                             {/* Avatar */}
                             <img

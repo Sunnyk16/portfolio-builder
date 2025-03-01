@@ -61,7 +61,7 @@ const MarqueeCards = () => {
             <motion.div
                 className='flex'
                 animate={{
-                    x: ['0%', '-20%'], // Move from 0% to -20%
+                    x: ['0%', '-100%'], // Move from 0% to -20%
                 }}
                 transition={{
                     duration: 10, // Duration of one loop (adjust based on the number of cards)
