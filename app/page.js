@@ -111,7 +111,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-[#212121]">
+    <div className="flex flex-col justify-center items-center bg-[#212121] overflow-hidden">
       {/* Header */}
       <Header />
 
@@ -163,7 +163,7 @@ export default function Home() {
       </motion.div>
 
       {/* Marquee Sections */}
-      <div className="overflow-hidden w-screen">
+      <div className="overflow-hidden w-full">
         <MarqueeCards />
         <MarqueeCardsReverse />
       </div>
