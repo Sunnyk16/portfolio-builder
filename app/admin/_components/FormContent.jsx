@@ -1,46 +1,35 @@
-import React, { useEffect } from 'react'
-import BasicDetail from './BasicDetail'
-import AddProject from './AddProject'
-import { db } from '../../../utils'
-import { project } from '../../../utils/schema'
-import { eq ,desc, asc} from 'drizzle-orm'
-import { useUser } from '@clerk/nextjs'
-import { useState } from 'react'
-import ProjectListEdit from './ProjectListEdit'
 
+import React, { useEffect, useState } from 'react';
+import BasicDetail from './BasicDetail';
+import AddProject from './AddProject';
+import { db } from '../../../utils';
+import { project } from '../../../utils/schema';
+import { eq, asc } from 'drizzle-orm';
+import { useUser } from '@clerk/nextjs';
+import ProjectListEdit from './ProjectListEdit';
 
-
-function FormtContent() {
-
+function FormContent() {
   const { user } = useUser();
-  const [projectList,setProjectList]=useState([])
+  const [projectList, setProjectList] = useState([]);
 
-  useEffect(()=>{
-    user && GetProjectList()
-  },[user])
+  useEffect(() => {
+    user && GetProjectList();
+  }, [user]);
 
-  const GetProjectList=async()=>{
-    const result =await db.select().from(project).where(eq(project.emailRef,user?.primaryEmailAddress?.emailAddress)).orderBy(asc(project.order))
-
-    console.log(result);
-    
-    setProjectList(result)
-
-  }
-
-  
+  const GetProjectList = async () => {
+    const result = await db.select().from(project).where(eq(project.emailRef, user?.primaryEmailAddress?.emailAddress)).orderBy(asc(project.order));
+    setProjectList(result);
+  };
 
   return (
     <div className='py-12 px-6 overflow-auto'>
-      <h2 className='text-bold text-3xl'>Start Designing Your portfolio page</h2>
-      <BasicDetail/>
-      <hr className='my-5'></hr>
-      <AddProject/>
-
-      <ProjectListEdit projectList={projectList} refreshData={GetProjectList}/>
-      
+      <h2 className='font-bold text-3xl'>Start Designing Your Portfolio Page</h2>
+      <BasicDetail />
+      <hr className='my-5' />
+      <AddProject />
+      <ProjectListEdit projectList={projectList} refreshData={GetProjectList} />
     </div>
-  )
+  );
 }
 
-export default FormtContent
+export default FormContent;
