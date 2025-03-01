@@ -1,17 +1,16 @@
 export default [
     {
-"color-scheme": "dark",
-"primary": "#09ecf3",
-"primary-content": "#005355",
-"secondary": "#966fb3",
-"accent": "#ffe999",
-"neutral": "#345da7",
-"info": "#2563eb",
-"success": "#16a34a",
-"warning": "#d97706",
-"error": "#e01927",
-"theme": "aqua"
-
+        "color-scheme": "dark",
+        "primary": "#09ecf3",
+        "primary-content": "#005355",
+        "secondary": "#966fb3",
+        "accent": "#ffe999",
+        "neutral": "#345da7",
+        "info": "#2563eb",
+        "success": "#16a34a",
+        "warning": "#d97706",
+        "error": "#e01927",
+        "theme": "aqua"
     },
     {
         "color-scheme": "light",
@@ -25,7 +24,6 @@ export default [
         "warning": "#ffa500",
         "error": "#ff4500",
         "theme": "sunset"
-
     },
     {
         "color-scheme": "dark",
@@ -39,7 +37,6 @@ export default [
         "warning": "#ffa500",
         "error": "#ff4500",
         "theme": "sunset-dark"
-
     },
     {
         "color-scheme": "light",
@@ -66,5 +63,200 @@ export default [
         "warning": "#ff9800",
         "error": "#f44336",
         "theme": "grape-dark"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#9c27b0",
+        "primary-content": "#ffffff",
+        "secondary": "#ff4081",
+        "accent": "#ffc107",
+        "neutral": "#f3e5f5",
+        "info": "#00bcd4",
+        "success": "#8bc34a",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "violet"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#4caf50",
+        "primary-content": "#ffffff",
+        "secondary": "#8bc34a",
+        "accent": "#cddc39",
+        "neutral": "#2e2e2e",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "forest"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#00bcd4",
+        "primary-content": "#ffffff",
+        "secondary": "#0097a7",
+        "accent": "#ffeb3b",
+        "neutral": "#e0f7fa",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "ocean"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#f44336",
+        "primary-content": "#ffffff",
+        "secondary": "#e91e63",
+        "accent": "#ff5722",
+        "neutral": "#2e2e2e",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "ember"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#ff9800",
+        "primary-content": "#ffffff",
+        "secondary": "#ff5722",
+        "accent": "#ffc107",
+        "neutral": "#fff3e0",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "citrus"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#3f51b5",
+        "primary-content": "#ffffff",
+        "secondary": "#2196f3",
+        "accent": "#ff4081",
+        "neutral": "#1a1a1a",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "midnight"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#e91e63",
+        "primary-content": "#ffffff",
+        "secondary": "#9c27b0",
+        "accent": "#ff9800",
+        "neutral": "#fce4ec",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "rose"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#795548",
+        "primary-content": "#ffffff",
+        "secondary": "#8d6e63",
+        "accent": "#a1887f",
+        "neutral": "#3e2723",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "clay"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#00bcd4",
+        "primary-content": "#ffffff",
+        "secondary": "#0097a7",
+        "accent": "#ffeb3b",
+        "neutral": "#e0f7fa",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "sky"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#ff5722",
+        "primary-content": "#ffffff",
+        "secondary": "#ff9800",
+        "accent": "#ffc107",
+        "neutral": "#2e2e2e",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "lava"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#8bc34a",
+        "primary-content": "#ffffff",
+        "secondary": "#4caf50",
+        "accent": "#cddc39",
+        "neutral": "#f1f8e9",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "mint"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#607d8b",
+        "primary-content": "#ffffff",
+        "secondary": "#78909c",
+        "accent": "#b0bec5",
+        "neutral": "#37474f",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "stone"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#ffc107",
+        "primary-content": "#000000",
+        "secondary": "#ff9800",
+        "accent": "#ff5722",
+        "neutral": "#fff8e1",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "gold"
+    },
+    {
+        "color-scheme": "dark",
+        "primary": "#9c27b0",
+        "primary-content": "#ffffff",
+        "secondary": "#673ab7",
+        "accent": "#e91e63",
+        "neutral": "#1a1a1a",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "amethyst"
+    },
+    {
+        "color-scheme": "light",
+        "primary": "#03a9f4",
+        "primary-content": "#ffffff",
+        "secondary": "#00bcd4",
+        "accent": "#ffeb3b",
+        "neutral": "#e1f5fe",
+        "info": "#00bcd4",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "theme": "azure"
     }
 ]
