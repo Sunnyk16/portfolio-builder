@@ -38,7 +38,7 @@ function SideNav() {
     { id: 3, name: 'My Portfolio', icon: User, path: `/${username}` },
     { id: 4, name: 'Style', icon: Brush, path: '/admin/style' },
     { id: 5, name: 'Stats', icon: BarChart, path: '/admin/analytics' },
-    { id: 6, name: 'Settings', icon: Settings, path: '/admin/setting' },
+    // { id: 6, name: 'Settings', icon: Settings, path: '/admin/setting' },
   ];
 
   return (
